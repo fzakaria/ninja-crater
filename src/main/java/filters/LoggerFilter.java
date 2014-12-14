@@ -24,6 +24,7 @@ import ninja.Result;
 import org.slf4j.Logger;
 
 import com.google.inject.Inject;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is just a demo for a filter. This filter just logs a request in level
@@ -36,13 +37,8 @@ import com.google.inject.Inject;
  */
 public class LoggerFilter implements Filter {
 
-    private final Logger logger;
+    private static Logger logger = LoggerFactory.getLogger(LoggerFilter.class);
 
-    @Inject
-    public LoggerFilter(Logger logger) {
-        this.logger = logger;
-
-    }
 
     @Override
     public Result filter(FilterChain chain, Context context) {

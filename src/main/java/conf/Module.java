@@ -24,9 +24,8 @@ public class Module extends AbstractModule {
     
 
     protected void configure() {
-        
-        bind(StartupActions.class);    
-        
+
+
     }
 
 }

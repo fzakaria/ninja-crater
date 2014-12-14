@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012-2014 the original author or authors.
+ * Copyright (C) 2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,28 +16,15 @@
 
 package controllers;
 
-import static org.junit.Assert.assertTrue;
-import ninja.NinjaFluentLeniumTest;
+import filters.JsonContentTypeFilter;
+import filters.LoggerFilter;
+import filters.ExceptionFilter;
+import ninja.FilterWith;
 
-import org.junit.Before;
-import org.junit.Test;
+@FilterWith({ExceptionFilter.class,
+             LoggerFilter.class,
+             JsonContentTypeFilter.class})
+abstract class BaseApiController {
 
-public class ApplicationControllerFluentLeniumTest extends NinjaFluentLeniumTest {
-
-    @Test
-    public void testThatHomepageWorks() {
-        
-        goTo(getServerAddress() + "/");
-        
-        System.out.println("title: " + title());
-        
-        assertTrue(title().contains("Home page"));
-        
-        click("#login");
-        
-        assertTrue(url().contains("login"));
-
-
-    }
 
 }
