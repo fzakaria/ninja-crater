@@ -35,7 +35,7 @@ public class UserController extends BaseApiController {
 
     public Result register(Context context, @JSR303Validation UserRegisterRequest registerRequest, Validation validation) {
         if (validation.hasBeanViolations()){
-            throw new PostRequestViolationException(getAllViolations(validation));
+            throw  PostRequestViolationException.fromValidation(validation);
         }
         return ok().render(userService.create(registerRequest));
     }
@@ -49,13 +49,6 @@ public class UserController extends BaseApiController {
     }
 
 
-    private List<FieldViolation> getAllViolations(Validation validation) {
-        ImmutableList.Builder<FieldViolation> builder = new ImmutableList.Builder<>();
-        builder.addAll(validation.getBeanViolations());
-        builder.addAll(validation.getFieldViolations());
-        return builder.build();
-    }
-    
 
 
 }

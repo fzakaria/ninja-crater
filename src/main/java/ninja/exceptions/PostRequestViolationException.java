@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
+import com.google.common.collect.ImmutableList;
 import ninja.validation.FieldViolation;
+import ninja.validation.Validation;
 
 public class PostRequestViolationException extends BadRequestException {
 
@@ -34,6 +36,13 @@ public class PostRequestViolationException extends BadRequestException {
 
     public List<Violation> getViolations() {
         return violations;
+    }
+
+    static public PostRequestViolationException fromValidation(Validation validation) {
+        ImmutableList.Builder<FieldViolation> builder = new ImmutableList.Builder<>();
+        builder.addAll(validation.getBeanViolations());
+        builder.addAll(validation.getFieldViolations());
+        return new PostRequestViolationException(builder.build());
     }
 
 
