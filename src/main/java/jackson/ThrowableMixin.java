@@ -2,6 +2,10 @@ package jackson;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 /***
  * This is a mixin class to add @JsonFilter so that we can customize
@@ -10,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @link http://wiki.fasterxml.com/JacksonFeatureJsonFilter
  */
 @JsonFilter("exceptionFilter")
+@JsonTypeInfo(use=Id.CLASS, include=As.PROPERTY, property="class")
 abstract class ThrowableMixin {
 
     @JsonIgnore
@@ -20,5 +25,8 @@ abstract class ThrowableMixin {
 
     @JsonIgnore
     abstract String getLocalizedMessage();
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    abstract String getMessage();
 
 }

@@ -27,7 +27,7 @@ public class ExceptionFilter implements Filter {
             return notFound().render(new NotFoundException(e));
         }catch (Throwable t) {
             logger.warn("Uncaught exception in filter", t);
-            Throwable rootCause = getRootCause(t);
+                Throwable rootCause = getRootCause(t);
             return internalServerError().render(rootCause);
         }
 
