@@ -16,11 +16,11 @@ public abstract class AbstractModel {
     @GeneratedValue(strategy=GenerationType.AUTO)
     public Long id;
 
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "created", nullable = false)
     private DateTime created;
 
-    @Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
+    @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "updated", nullable = false)
     private DateTime updated;
 

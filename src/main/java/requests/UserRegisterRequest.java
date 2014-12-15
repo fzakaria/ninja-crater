@@ -12,7 +12,7 @@ public class UserRegisterRequest {
 
     @NotNull
     @NotBlank
-    @Size(min=6, max=30)
+    @Size(min=3, max=30)
     public String username;
 
     @NotNull
