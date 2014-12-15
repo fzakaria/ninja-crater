@@ -21,9 +21,9 @@ import filters.LoggerFilter;
 import filters.ExceptionFilter;
 import ninja.FilterWith;
 
-@FilterWith({ExceptionFilter.class,
-             LoggerFilter.class,
-             JsonContentTypeFilter.class})
+@FilterWith({LoggerFilter.class,
+             JsonContentTypeFilter.class,
+             ExceptionFilter.class,})
 abstract class BaseApiController {
 
 

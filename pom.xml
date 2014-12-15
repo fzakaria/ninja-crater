@@ -52,7 +52,9 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <contextPath>/</contextPath>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
                     <stopKey>stop</stopKey>
                     <stopPort>8889</stopPort>
                     <scanIntervalSeconds>1</scanIntervalSeconds>
@@ -128,21 +130,6 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>tinymce-jquery</artifactId>
-            <version>4.0.16</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>2.1.1</version>
-        </dependency>         
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.182</version>
@@ -161,6 +148,11 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time-hibernate</artifactId>
             <version>1.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+            <version>2.4.0</version>
         </dependency>
         <dependency>
             <groupId>org.mindrot</groupId>
